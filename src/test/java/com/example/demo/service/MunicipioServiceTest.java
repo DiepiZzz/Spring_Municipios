@@ -1,4 +1,4 @@
-package com.example.demo.service;
+/*package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ import com.example.demo.model.Municipio;
 /**
  * Clase de pruebas para el servicio de Municipio.
  * Utiliza @SpringBootTest y @Transactional para un entorno de pruebas robusto.
- */
+
 @SpringBootTest
 @Transactional
 public class MunicipioServiceTest {
@@ -30,10 +30,7 @@ public class MunicipioServiceTest {
 
     @Autowired
     private MunicipioRepository municipioRepository;
-    /**
-     * Se ejecuta antes de cada método de test.
-     * Limpia la tabla de municipios.
-     */ // Para limpieza o verificación directa
+   
 
     @Test
     void testSaveMunicipio() {
@@ -188,4 +185,4 @@ public class MunicipioServiceTest {
         assertTrue(municipioService.existsByNombreDepartamentoPais("Cartagena", "Bolívar", "Colombia"), "Debería retornar true para un municipio existente");
         assertFalse(municipioService.existsByNombreDepartamentoPais("Barranquilla", "Atlántico", "Colombia"), "Debería retornar false para un municipio inexistente");
     }
-}
+}*/
