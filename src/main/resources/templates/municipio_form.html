@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar/Editar Municipio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            flex-grow: 1;
+            margin: 0 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .cancel-button {
+            background-color: #6c757d;
+        }
+        .cancel-button:hover {
+            background-color: #5a6268;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border: 1px solid #f5c6cb;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Agregar Nuevo Municipio</h2>
+
+        <form th:action="@{/municipios/save}" th:object="${municipio}" method="post">
+            <div th:if="${#fields.hasGlobalErrors()}" class="alert">
+                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+            </div>
+
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" required>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="departamento">Departamento:</label>
+                <input type="text" id="departamento" th:field="*{departamento}" required>
+                <span th:if="${#fields.hasErrors('departamento')}" th:errors="*{departamento}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <input type="text" id="pais" th:field="*{pais}" required>
+                <span th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="alcalde">Alcalde:</label>
+                <input type="text" id="alcalde" th:field="*{alcalde}">
+                <span th:if="${#fields.hasErrors('alcalde')}" th:errors="*{alcalde}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="gobernador">Gobernador:</label>
+                <input type="text" id="gobernador" th:field="*{gobernador}">
+                <span th:if="${#fields.hasErrors('gobernador')}" th:errors="*{gobernador}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="patronoReligioso">Patrono Religioso:</label>
+                <input type="text" id="patronoReligioso" th:field="*{patronoReligioso}">
+                <span th:if="${#fields.hasErrors('patronoReligioso')}" th:errors="*{patronoReligioso}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="numHabitantes">Número de Habitantes:</label>
+                <input type="number" id="numHabitantes" th:field="*{numHabitantes}">
+                <span th:if="${#fields.hasErrors('numHabitantes')}" th:errors="*{numHabitantes}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="numCasas">Número de Casas:</label>
+                <input type="number" id="numCasas" th:field="*{numCasas}">
+                <span th:if="${#fields.hasErrors('numCasas')}" th:errors="*{numCasas}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="numParques">Número de Parques:</label>
+                <input type="number" id="numParques" th:field="*{numParques}">
+                <span th:if="${#fields.hasErrors('numParques')}" th:errors="*{numParques}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="numColegios">Número de Colegios:</label>
+                <input type="number" id="numColegios" th:field="*{numColegios}">
+                <span th:if="${#fields.hasErrors('numColegios')}" th:errors="*{numColegios}" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" th:field="*{descripcion}"></textarea>
+                <span th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}" class="error-message"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Guardar Municipio</button>
+                <a th:href="@{/}" class="button cancel-button">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

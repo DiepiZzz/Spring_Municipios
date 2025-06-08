@@ -25,11 +25,11 @@ public class PasswordResetController {
 
         if (usuario.isEmpty()) {
             model.addAttribute("error", "Token de recuperación inválido o expirado.");
-            return "error_page"; // Crea una página de error o redirige al login con error
+            return "error_page"; 
         }
 
         model.addAttribute("token", token);
-        return "reset_password"; // Necesitarás crear este HTML
+        return "reset_password"; 
     }
 
     @PostMapping("/reset-password")
@@ -41,7 +41,7 @@ public class PasswordResetController {
 
         if (!newPassword.equals(confirmPassword)) {
             model.addAttribute("error", "Las contraseñas no coinciden.");
-            model.addAttribute("token", token); // Para mantener el token si el formulario se vuelve a mostrar
+            model.addAttribute("token", token); 
             return "reset_password";
         }
 

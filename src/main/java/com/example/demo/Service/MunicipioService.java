@@ -16,7 +16,7 @@ public class MunicipioService {
     private MunicipioRepository municipioRepository;
 
     public Municipio saveMunicipio(Municipio municipio) {
-        // Puedes añadir validaciones o lógica de negocio antes de guardar
+        
         return municipioRepository.save(municipio);
     }
 
@@ -57,7 +57,7 @@ public class MunicipioService {
             existingMunicipio.setDescripcion(municipioDetails.getDescripcion());
             return municipioRepository.save(existingMunicipio);
         } else {
-            return null; // O lanzar una excepción
+            return null; 
         }
     }
 

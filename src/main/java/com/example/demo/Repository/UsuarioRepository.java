@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.Usuario;
 
-@Repository // Marca esta interfaz como un componente de repositorio
+@Repository 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    // JpaRepository ya proporciona métodos CRUD (save, findById, findAll, delete, etc.)
+    
 
-    // Puedes agregar métodos personalizados si necesitas consultas específicas:
+    
     Optional<Usuario> findByUsername(String username);
     Optional<Usuario> findByEmail(String email);
     boolean existsByUsername(String username);

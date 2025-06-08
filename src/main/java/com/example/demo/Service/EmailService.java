@@ -1,4 +1,4 @@
-package com.example.demo.Service; // O crea un nuevo paquete si prefieres, ej. com.example.demo.mail
+package com.example.demo.Service; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -13,7 +13,7 @@ public class EmailService {
 
     public void sendEmail(String to, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("diepiposa007@gmail.com"); // Debe coincidir con spring.mail.username
+        message.setFrom("diepiposa007@gmail.com"); 
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);

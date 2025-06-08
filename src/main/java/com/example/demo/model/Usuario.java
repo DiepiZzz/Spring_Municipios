@@ -13,16 +13,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor; // Importa UserDetails
+import lombok.AllArgsConstructor; 
 import lombok.Data;
-import lombok.NoArgsConstructor; // O java.util.Set si manejas roles como Set
+import lombok.NoArgsConstructor; 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements UserDetails { // ¡Ahora implementa UserDetails!
+public class Usuario implements UserDetails { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,14 +40,13 @@ public class Usuario implements UserDetails { // ¡Ahora implementa UserDetails!
     @Column(unique = true, nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false) // Nuevo campo para el rol
-    private String role; // Por ejemplo, "ROLE_USER", "ROLE_ADMIN"
+    @Column(nullable = false) 
+    private String role; 
 
-    // --- Métodos de la interfaz UserDetails ---
+  
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Asigna el rol al usuario. Si tuvieras múltiples roles, los gestionarías aquí.
-        // Por ejemplo, si 'role' fuera una cadena como "USER,ADMIN", podrías dividirla.
+       
         return List.of(new SimpleGrantedAuthority(role));
     }
 
@@ -58,11 +57,9 @@ public class Usuario implements UserDetails { // ¡Ahora implementa UserDetails!
 
     @Override
     public String getUsername() {
-        return username; // Ya tienes un campo 'username', úsalo como nombre de usuario para Spring Security
+        return username;
     }
 
-    // Estos métodos devuelven 'true' por defecto. Puedes añadir lógica personalizada
-    // si quieres implementar cuentas expiradas, bloqueadas, etc.
     @Override
     public boolean isAccountNonExpired() {
         return true;

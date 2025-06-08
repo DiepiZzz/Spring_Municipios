@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired; // Importa el nuevo servicio
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +22,7 @@ public class LoginController {
 
     @GetMapping("/forgot-password")
     public String showForgotPasswordForm() {
-        return "forgot_password"; // Necesitarás crear este HTML
+        return "forgot_password"; 
     }
 
     @PostMapping("/forgot-password")
@@ -32,8 +32,8 @@ public class LoginController {
         if (result != null) {
             redirectAttributes.addFlashAttribute("success", result);
         } else {
-            // Por seguridad, se recomienda no decir si el email existe o no.
-            // Siempre muestra un mensaje genérico.
+            
+            
             redirectAttributes.addFlashAttribute("error", "Si el email está registrado, se enviará un enlace de recuperación.");
         }
         return "redirect:/forgot-password";
